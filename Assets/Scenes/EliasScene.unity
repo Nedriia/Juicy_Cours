@@ -683,9 +683,10 @@ MonoBehaviour:
   enemy1: {fileID: 2414820282189043175, guid: 4c7bd5e79c9324642a937527d06cd4ff, type: 3}
   numEnemies_Vertical: 5
   numEnemies_Horizontal: 5
-  spaceBetweenEnemyes_Vertical: 2
-  spaceBetweenEnemyes_Horizontal: 2
+  spaceBetweenEnemyes_Vertical: 1
+  spaceBetweenEnemyes_Horizontal: 1
   enemySpeed: 1
+  downMovementDelay: 0.2
 --- !u!4 &2141955275
 Transform:
   m_ObjectHideFlags: 0

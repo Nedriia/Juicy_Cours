@@ -10,9 +10,7 @@ public class EnemyBlockManager : MonoBehaviour
     public float spaceBetweenEnemyes_Vertical, spaceBetweenEnemyes_Horizontal;
     public List<List<GameObject>> enemyList = new List<List<GameObject>>();
     public float enemySpeed;
-    public float downSpaceMovement;
-    public bool goingDown;
-    public Vector3 downPosition_tmp;
+    public float downMovementDelay;
 
     // Start is called before the first frame update
     void Start()
@@ -33,16 +31,13 @@ public class EnemyBlockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (goingDown)
-        {
 
-        }
     }
 
     public IEnumerator GoToLeft()
     {
         GoDown();
-        yield return new WaitForSeconds(1 / enemySpeed);
+        yield return new WaitForSeconds(downMovementDelay / enemySpeed);
         for (int y = 0; y < numEnemies_Vertical; y++)
         {
             for (int x = 0; x < numEnemies_Horizontal; x++)
@@ -58,7 +53,7 @@ public class EnemyBlockManager : MonoBehaviour
     public IEnumerator GoToRight()
     {
         GoDown();
-        yield return new WaitForSeconds(1/enemySpeed);
+        yield return new WaitForSeconds(downMovementDelay / enemySpeed);
         for (int y = 0; y < numEnemies_Vertical; y++)
         {
             for (int x = 0; x < numEnemies_Horizontal; x++)
