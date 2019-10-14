@@ -6,8 +6,10 @@ public class Projectiles : MonoBehaviour
 {
     [Header("Projectile tweakable Values")]
     private Rigidbody2D rb;
+    private float heightDeadZone = 11;
+    private Vector2 movement = new Vector2(0, 1);
+
     public float speed;
-    private Vector2 movement = new Vector2(0,1);
     public float sizeX, sizeY;
 
     private void Awake()
@@ -19,6 +21,8 @@ public class Projectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = movement * speed * Time.deltaTime;    
+        rb.velocity = movement * speed * Time.deltaTime;
+        if (transform.position.y > heightDeadZone)
+            DestroyImmediate(this.gameObject);
     }
 }

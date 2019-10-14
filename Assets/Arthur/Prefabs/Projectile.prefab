@@ -136,3 +136,4 @@ MonoBehaviour:
   speed: 1000
   sizeX: 2.5
   sizeY: 2
+  heightDeadZone: 12
