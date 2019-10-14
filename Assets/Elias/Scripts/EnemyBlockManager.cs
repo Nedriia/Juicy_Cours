@@ -31,7 +31,7 @@ public class EnemyBlockManager : MonoBehaviour
             enemyList.Add(list_tmp);
         }
         enemyRef = getEnemyRef();
-        refDistance = Vector3.Distance(playerRef.transform.position, transform.position);
+        refDistance = Vector3.Distance(new Vector3(0,playerRef.transform.position.y,0) , new Vector3(0, transform.position.y,0));
         
     }
 
@@ -39,7 +39,11 @@ public class EnemyBlockManager : MonoBehaviour
     void Update()
     {
         enemyRef = getEnemyRef();
-        //speedFactor = 1 + 
+        speedFactor = 1 + refDistance/ Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, transform.position.y, 0));
+        if (speedFactor < 1)
+        {
+            speedFactor = 1;
+        }
     }
 
     public IEnumerator GoToLeft()
@@ -92,7 +96,7 @@ public class EnemyBlockManager : MonoBehaviour
     {
         for (int y = numEnemies_Vertical - 1; y >= 0; y--)
         {
-            for (int x = numEnemies_Horizontal; x >= 0; x--)
+            for (int x = numEnemies_Horizontal - 1; x >= 0; x--)
             {
                 if (enemyList[x][y] != null)
                 {

@@ -199,6 +199,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41032892}
   m_CullTransparentMesh: 0
+--- !u!1 &151863656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8222808785681206650, guid: 282447ebf1714614b8d443d52289a3a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1393230534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &189829561
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &485602852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1271,6 +1277,9 @@ MonoBehaviour:
   downMovementDelay: 0.2
   waveFactor: 1
   speedFactor: 1
+  enemyRef: {fileID: 0}
+  refDistance: 0
+  playerRef: {fileID: 151863656}
 --- !u!4 &2141955275
 Transform:
   m_ObjectHideFlags: 0
