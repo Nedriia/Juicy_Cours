@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LeftLimit
   - RightLimit
+  - Projectile
   layers:
   - Default
   - TransparentFX

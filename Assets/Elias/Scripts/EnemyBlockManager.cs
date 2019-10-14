@@ -11,6 +11,10 @@ public class EnemyBlockManager : MonoBehaviour
     public List<List<GameObject>> enemyList = new List<List<GameObject>>();
     public float enemySpeed;
     public float downMovementDelay;
+    public float waveFactor, speedFactor;
+    public GameObject enemyRef; // Reference to the last Enemy (the most close to the player)
+    public float refDistance;
+    public GameObject playerRef;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +30,16 @@ public class EnemyBlockManager : MonoBehaviour
             }
             enemyList.Add(list_tmp);
         }
+        enemyRef = getEnemyRef();
+        refDistance = Vector3.Distance(playerRef.transform.position, transform.position);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        enemyRef = getEnemyRef();
+        //speedFactor = 1 + 
     }
 
     public IEnumerator GoToLeft()
@@ -78,5 +86,20 @@ public class EnemyBlockManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public GameObject getEnemyRef()
+    {
+        for (int y = numEnemies_Vertical - 1; y >= 0; y--)
+        {
+            for (int x = numEnemies_Horizontal; x >= 0; x--)
+            {
+                if (enemyList[x][y] != null)
+                {
+                    return enemyList[x][y];
+                }
+            }
+        }
+        return null;
     }
 }

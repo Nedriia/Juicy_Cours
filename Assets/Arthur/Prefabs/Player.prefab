@@ -95,8 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dd4509bde6cb44ba391fb51732ba49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 1826572943268733042, guid: 2bc04dc873f6289478cab154a1866bc4,
+    type: 3}
   speed: 10
-  moveX: 0
+  cooldown: 0
+  offsetStartingProjectile: 1
+  limitX: 10
 --- !u!50 &8222808785681206654
 Rigidbody2D:
   serializedVersion: 4
