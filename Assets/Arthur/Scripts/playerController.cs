@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    [Header("SpaceShip Tweakable Values")]
     public float speed;
     private Vector3 movement;
-    public float moveX;
+    private float moveX;
+    public GameObject projectile;
+
+    [Header("Shot Tweakable Values")]
+    public float cooldown;
+    private float timer;
+    private bool shooted;
+    public float offsetStartingProjectile;
 
     // Update is called once per frame
     void Update()
@@ -14,8 +22,18 @@ public class playerController : MonoBehaviour
         moveX = Input.GetAxisRaw("Horizontal");
         Move(moveX);
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !shooted)
             Fire();
+
+        if (shooted)
+        {
+            timer += Time.deltaTime;
+            if (timer > cooldown)
+            {
+                timer = 0;
+                shooted = false;
+            }
+        }
     }
 
     void Move(float MoveX)
@@ -27,7 +45,8 @@ public class playerController : MonoBehaviour
 
     void Fire()
     {
-
+        shooted = true;
+        var projectileFired = Instantiate(projectile,new Vector3(transform.position.x, transform.position.y + offsetStartingProjectile),Quaternion.Euler(new Vector3(0,0,90)));
     }
 
     private void OnCollisionStay2D(Collision2D collision)
