@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class EnemyBlockManager : MonoBehaviour
 {
-
+    [Header("EnemySpawn")]
     public GameObject enemy1;
     public int numEnemies_Vertical, numEnemies_Horizontal;
     public float spaceBetweenEnemyes_Vertical, spaceBetweenEnemyes_Horizontal;
-    public List<List<GameObject>> enemyList = new List<List<GameObject>>();
-    public float enemySpeed;
+    List<List<GameObject>> enemyList;
+
+    
+    [Header("Speed Modifiers")]
+    public float maxSpeed;
+    public float minSpeed;
+    float enemySpeed;
+    public float waveFactor;
     public float downMovementDelay;
-    public float waveFactor, speedFactor;
-    public GameObject enemyRef; // Reference to the last Enemy (the most close to the player)
-    public float refDistance;
+    public AnimationCurve speedCurve;
+
+    [Header("References")]
     public GameObject playerRef;
+    GameObject enemyRef; // Reference to the last Enemy (the most close to the player)
+    float refDistance;
+
+
+
+
+    public float getEnemySpeed()
+    {
+        return enemySpeed;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyList = new List<List<GameObject>>();
         for (int y = 0; y < numEnemies_Vertical; y++)
         {
             List<GameObject> list_tmp = new List<GameObject>();
@@ -31,19 +48,14 @@ public class EnemyBlockManager : MonoBehaviour
             enemyList.Add(list_tmp);
         }
         enemyRef = getEnemyRef();
-        refDistance = Vector3.Distance(new Vector3(0,playerRef.transform.position.y,0) , new Vector3(0, transform.position.y,0));
-        
+        refDistance = Vector3.Distance(new Vector3(0,playerRef.transform.position.y,0) , new Vector3(0, enemyRef.transform.position.y,0));
     }
 
     // Update is called once per frame
     void Update()
     {
         enemyRef = getEnemyRef();
-        speedFactor = 1 + refDistance/ Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, transform.position.y, 0));
-        if (speedFactor < 1)
-        {
-            speedFactor = 1;
-        }
+        enemySpeed = minSpeed + (maxSpeed-minSpeed) * speedCurve.Evaluate((1 - Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0)) / refDistance));
     }
 
     public IEnumerator GoToLeft()
@@ -56,7 +68,7 @@ public class EnemyBlockManager : MonoBehaviour
             {
                 if (enemyList[x][y] != null)
                 {
-                    enemyList[x][y].GetComponent<EnemyMovement>().enemyDirection = EnemyDirection.Left;
+                    enemyList[x][y].GetComponent<EnemyMovement>().SetEnemyDirection(EnemyDirection.Left);
                 }
 
             }
@@ -72,7 +84,7 @@ public class EnemyBlockManager : MonoBehaviour
             {
                 if (enemyList[x][y] != null)
                 {
-                    enemyList[x][y].GetComponent<EnemyMovement>().enemyDirection = EnemyDirection.Right;
+                    enemyList[x][y].GetComponent<EnemyMovement>().SetEnemyDirection(EnemyDirection.Right);
                 }
             }
         }
@@ -86,7 +98,7 @@ public class EnemyBlockManager : MonoBehaviour
             {
                 if (enemyList[x][y] != null)
                 {
-                    enemyList[x][y].GetComponent<EnemyMovement>().enemyDirection = EnemyDirection.Down;
+                    enemyList[x][y].GetComponent<EnemyMovement>().SetEnemyDirection(EnemyDirection.Down);
                 }
             }
         }

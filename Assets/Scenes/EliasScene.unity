@@ -976,12 +976,17 @@ PrefabInstance:
     - target: {fileID: 8222808785681206653, guid: 282447ebf1714614b8d443d52289a3a4,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8222808785681206653, guid: 282447ebf1714614b8d443d52289a3a4,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
         type: 3}
@@ -998,6 +1003,56 @@ PrefabInstance:
         type: 3}
       propertyPath: offsetStartingProjectile
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: spaceRotationCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: rotationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: maxAngleRotation
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 282447ebf1714614b8d443d52289a3a4, type: 3}
@@ -1273,12 +1328,34 @@ MonoBehaviour:
   numEnemies_Horizontal: 5
   spaceBetweenEnemyes_Vertical: 1
   spaceBetweenEnemyes_Horizontal: 1
-  enemySpeed: 1
-  downMovementDelay: 0.2
+  maxSpeed: 10
+  minSpeed: 1
   waveFactor: 1
-  speedFactor: 1
-  enemyRef: {fileID: 0}
-  refDistance: 0
+  downMovementDelay: 0.2
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   playerRef: {fileID: 151863656}
 --- !u!4 &2141955275
 Transform:

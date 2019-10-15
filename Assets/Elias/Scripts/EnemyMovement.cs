@@ -11,15 +11,28 @@ public enum EnemyDirection
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed;
-    public EnemyDirection enemyDirection;
-    public EnemyBlockManager enemyBlockManager;
+    EnemyDirection enemyDirection;
+    EnemyBlockManager enemyBlockManager;
+    public gameManager game_;
+    public GameObject floatingScore;
+    public float score = 10;
+    public float floatingText_MaxSize;
+    public float floatingText_MediumSize;
 
     void Start()
     {
+        game_ = Camera.main.GetComponent<gameManager>();
         enemyBlockManager = transform.parent.GetComponent<EnemyBlockManager>();
-        speed = transform.parent.GetComponent<EnemyBlockManager>().enemySpeed;
+    }
 
+    public EnemyDirection GetEnemyDirection()
+    {
+        return enemyDirection;
+    }
+
+    public void SetEnemyDirection(EnemyDirection enemyDirection_)
+    {
+        enemyDirection = enemyDirection_;
     }
 
     // Update is called once per frame
@@ -28,13 +41,13 @@ public class EnemyMovement : MonoBehaviour
         switch (enemyDirection)
         {
             case EnemyDirection.Down:
-                transform.position -= new Vector3(0, speed * Time.fixedDeltaTime, 0) * enemyBlockManager.speedFactor * enemyBlockManager.waveFactor;
+                transform.position -= new Vector3(0, enemyBlockManager.getEnemySpeed() * Time.fixedDeltaTime, 0)  * enemyBlockManager.waveFactor;
                 break;
             case EnemyDirection.Left:
-                transform.position -= new Vector3(speed * Time.fixedDeltaTime, 0, 0) * enemyBlockManager.speedFactor * enemyBlockManager.waveFactor;
+                transform.position -= new Vector3(enemyBlockManager.getEnemySpeed() * Time.fixedDeltaTime, 0, 0) * enemyBlockManager.waveFactor;
                 break;
             case EnemyDirection.Right:
-                transform.position += new Vector3(speed * Time.fixedDeltaTime, 0, 0) * enemyBlockManager.speedFactor * enemyBlockManager.waveFactor;
+                transform.position += new Vector3(enemyBlockManager.getEnemySpeed() * Time.fixedDeltaTime, 0, 0)  * enemyBlockManager.waveFactor;
                 break;
             default:
                 break;
@@ -55,8 +68,34 @@ public class EnemyMovement : MonoBehaviour
         //Projectile Colliding
         if (collision.tag == "Projectile")
         {
+            if (floatingScore)
+            {
+                ShowFloatingScore();
+            }
             Destroy(gameObject);
             Destroy(collision.gameObject);
+        }
+    }
+
+    void ShowFloatingScore()
+    {
+        if (!game_.float_text)
+        {
+            game_.killed = true;
+            game_.timerMultiplicator = 0;
+            game_.multiplicator++;
+
+            floatingScore.GetComponent<TextMesh>().text = "+" + (score * game_.multiplicator).ToString();
+            Instantiate(floatingScore, transform.position, Quaternion.identity);
+
+            if (game_.multiplicator > 5)
+            {
+                floatingScore.transform.localScale = new Vector3(floatingText_MediumSize, floatingText_MediumSize, 1);
+            }
+            else if (game_.multiplicator > 10)
+            {
+                floatingScore.transform.localScale = new Vector3(floatingText_MaxSize, floatingText_MaxSize, 1);
+            }
         }
     }
 }
