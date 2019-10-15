@@ -96,13 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727ee385d84818f43bf3baa70482e551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  score: 10
   game_: {fileID: 0}
-  enemyDirection: 0
-  enemyBlockManager: {fileID: 0}
   floatingScore: {fileID: 8569655675525360986, guid: 4f56f3cf7e60f4b41a016d5bc9e2811e,
     type: 3}
+  enemyLightExplotion: {fileID: 8576831785728832700, guid: f4d9bb771aa88534385481da50832b0c,
+    type: 3}
+  score: 10
   floatingText_MaxSize: 0.15
   floatingText_MediumSize: 0.1
 --- !u!50 &-4666215056119755641
