@@ -97,7 +97,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  score: 10
+  game_: {fileID: 0}
   enemyDirection: 0
+  enemyBlockManager: {fileID: 0}
+  floatingScore: {fileID: 8569655675525360986, guid: 4f56f3cf7e60f4b41a016d5bc9e2811e,
+    type: 3}
+  floatingText_MaxSize: 0.15
+  floatingText_MediumSize: 0.1
 --- !u!50 &-4666215056119755641
 Rigidbody2D:
   serializedVersion: 4
