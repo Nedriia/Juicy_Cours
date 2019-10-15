@@ -32,8 +32,14 @@ public class playerController : MonoBehaviour
 
     private float timer;
     private bool shooted;
-    
 
+    public CameraShake shakeCamera;
+    private Animator animatorPlayer;
+
+    private void Awake()
+    {
+        animatorPlayer = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -94,6 +100,9 @@ public class playerController : MonoBehaviour
 
     void Fire()
     {
+        animatorPlayer.Play("shoot");
+        shakeCamera.shakeDuration = 0.1f;
+        shakeCamera.Shake();
         shooted = true;
         var projectileFired = Instantiate(projectile,new Vector3(transform.position.x, transform.position.y + offsetStartingProjectile),Quaternion.Euler(new Vector3(0,0,90)));
     }

@@ -229,6 +229,25 @@ MonoBehaviour:
   updateInterval: 0.05
   ghosts: 4
   _spriteRenderer: {fileID: 151863660}
+--- !u!95 &151863664
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151863656}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 76a029938d6e9ef4982fd1c41cfb2048, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &189829561
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +262,7 @@ GameObject:
   - component: {fileID: 189829565}
   - component: {fileID: 189829567}
   - component: {fileID: 189829566}
+  - component: {fileID: 189829568}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -362,6 +382,21 @@ MonoBehaviour:
   test: {fileID: 189829566}
   manager: {fileID: 0}
   ennemyGroup: {fileID: 0}
+--- !u!114 &189829568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189829561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f6d8b6de6a448488d2d6cd6adfdabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.1
+  shakeAmount: 0.05
+  decreaseFactor: 1
 --- !u!1 &425652743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1307,11 @@ PrefabInstance:
       propertyPath: offsetStartingProjectile
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8222808785681206651, guid: 282447ebf1714614b8d443d52289a3a4,
+        type: 3}
+      propertyPath: shakeCamera
+      value: 
+      objectReference: {fileID: 189829568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 282447ebf1714614b8d443d52289a3a4, type: 3}
 --- !u!1 &1517485551
@@ -1546,12 +1586,16 @@ MonoBehaviour:
   numEnemies_Horizontal: 5
   spaceBetweenEnemyes_Vertical: 1
   spaceBetweenEnemyes_Horizontal: 1
-  enemySpeed: 1
-  downMovementDelay: 0.2
+  maxSpeed: 0
+  minSpeed: 0
   waveFactor: 1
-  speedFactor: 1
-  enemyRef: {fileID: 0}
-  refDistance: 0
+  downMovementDelay: 0.2
+  speedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   playerRef: {fileID: 151863656}
 --- !u!4 &2141955275
 Transform:
