@@ -55,7 +55,11 @@ public class EnemyBlockManager : MonoBehaviour
     void Update()
     {
         enemyRef = getEnemyRef();
-        enemySpeed = minSpeed + (maxSpeed-minSpeed) * speedCurve.Evaluate((1 - Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0)) / refDistance));
+        if (enemyRef != null)
+        {
+            enemySpeed = minSpeed + (maxSpeed - minSpeed) * speedCurve.Evaluate((1 - Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0)) / refDistance));
+        }
+        
     }
 
     public IEnumerator GoToLeft()
