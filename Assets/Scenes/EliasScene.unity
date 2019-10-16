@@ -665,6 +665,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612084228}
   m_CullTransparentMesh: 0
+--- !u!1 &863073245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863073247}
+  - component: {fileID: 863073246}
+  - component: {fileID: 863073248}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &863073246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863073245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3105ebb7fae19b48830ad58535c9ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arcadeBckg: {fileID: 8300000, guid: 5d1b31ffeecb5474499545b47cc6cdb7, type: 3}
+  musicBckg: {fileID: 8300000, guid: ba452fd9a2278ac4eb096f7129bd91b7, type: 3}
+  explosion: {fileID: 8300000, guid: f0c9b402b010c334dad4e430c38025a2, type: 3}
+  shootPlayer: {fileID: 8300000, guid: 4a1c007396b35924090db7082de69a5b, type: 3}
+--- !u!4 &863073247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863073245}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863073248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863073245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9447c74afe93ed247bd65fb940988185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 863073246}
 --- !u!1001 &882222126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,6 +738,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
+    - target: {fileID: 2414820282189043175, guid: 4c7bd5e79c9324642a937527d06cd4ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2414820282189043174, guid: 4c7bd5e79c9324642a937527d06cd4ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,7 +751,7 @@ PrefabInstance:
     - target: {fileID: 2414820282189043174, guid: 4c7bd5e79c9324642a937527d06cd4ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.48
+      value: 8.3
       objectReference: {fileID: 0}
     - target: {fileID: 2414820282189043174, guid: 4c7bd5e79c9324642a937527d06cd4ff,
         type: 3}
