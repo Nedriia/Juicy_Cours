@@ -106,6 +106,7 @@ MonoBehaviour:
   score: 10
   floatingText_MaxSize: 0.15
   floatingText_MediumSize: 0.1
+  waitActivationTime: 0.15
 --- !u!50 &-4666215056119755641
 Rigidbody2D:
   serializedVersion: 4

@@ -21,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
     public float floatingText_MaxSize;
     public float floatingText_MediumSize;
     private CameraShake shake;
+    public float waitActivationTime;
 
     void Start()
     {
@@ -80,17 +81,17 @@ public class EnemyMovement : MonoBehaviour
 
             if (floatingScore)
             {
-                ShowFloatingScore();
+                StartCoroutine(waitSeconds(waitActivationTime));
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+                GameObject gameObj_tmp = Instantiate(enemyLightExplotion, transform.position, Quaternion.identity);
+                gameObj_tmp.transform.position = new Vector3(gameObj_tmp.transform.position.x, gameObj_tmp.transform.position.y, -6);
+
+                if (game_.particlesActivation)
+                    gameObj_tmp = Instantiate(enemyLightExplotion2, transform.position, Quaternion.identity);
             }
             ObjectRefs.Instance.soundManager.PlayExplision();
 
-            GameObject gameObj_tmp = Instantiate(enemyLightExplotion, transform.position, Quaternion.identity);
-            gameObj_tmp.transform.position = new Vector3(gameObj_tmp.transform.position.x, gameObj_tmp.transform.position.y, -6);
-
-            if(game_.particlesActivation)
-                gameObj_tmp = Instantiate(enemyLightExplotion2, transform.position, Quaternion.identity);
-
-            Destroy(gameObject);
             Destroy(collision.gameObject);
         }
     }
@@ -104,8 +105,8 @@ public class EnemyMovement : MonoBehaviour
             game_.multiplicator++;
 
             floatingScore.GetComponent<TextMesh>().text = "+" + (score * game_.multiplicator).ToString();
+            //Instantiate here
             Instantiate(floatingScore, transform.position, Quaternion.identity);
-
             if (game_.multiplicator > 5)
             {
                 floatingScore.transform.localScale = new Vector3(floatingText_MediumSize, floatingText_MediumSize, 1);
@@ -117,7 +118,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    IEnumerator waitSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        ShowFloatingScore();
 
 
-    
+        Destroy(gameObject);           
+    }
+
 }
