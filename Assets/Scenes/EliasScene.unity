@@ -699,6 +699,7 @@ MonoBehaviour:
   musicBckg: {fileID: 8300000, guid: ba452fd9a2278ac4eb096f7129bd91b7, type: 3}
   explosion: {fileID: 8300000, guid: f0c9b402b010c334dad4e430c38025a2, type: 3}
   shootPlayer: {fileID: 8300000, guid: 4a1c007396b35924090db7082de69a5b, type: 3}
+  SoundActive: 0
 --- !u!4 &863073247
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,9 +1667,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
         type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 151863656}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: enymyAproachingcurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: maxEmisionVal
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260344101163950786, guid: 73d03295bbbc29c42a876899a2e29f85,
+        type: 3}
+      propertyPath: EmisionMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 45b1516f6c5d14d488fe12a369467282, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d03295bbbc29c42a876899a2e29f85, type: 3}
 --- !u!1 &7362648902433677997

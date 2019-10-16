@@ -24,8 +24,12 @@ public class EnemyBlockManager : MonoBehaviour
     GameObject enemyRef; // Reference to the last Enemy (the most close to the player)
     float refDistance;
 
-
-
+    [Header("EnemyAproaching")]
+    public AnimationCurve enymyAproachingcurve;
+    public int maxEmisionVal, minEmisionVal;
+    public Material EmisionMaterial;
+    
+    bool delaySpawn = false;
 
     public float getEnemySpeed()
     {
@@ -35,20 +39,37 @@ public class EnemyBlockManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnemySpawn();
+    }
+
+    public void EnemySpawn()
+    {
         enemyList = new List<List<GameObject>>();
         for (int y = 0; y < numEnemies_Vertical; y++)
         {
             List<GameObject> list_tmp = new List<GameObject>();
             for (int x = 0; x < numEnemies_Horizontal; x++)
             {
-                GameObject go_tmp = Instantiate(enemy1, transform.position + new Vector3(spaceBetweenEnemyes_Horizontal * x, -spaceBetweenEnemyes_Vertical * y, 0) , Quaternion.identity);
+                GameObject go_tmp = Instantiate(enemy1, transform.position + new Vector3(spaceBetweenEnemyes_Horizontal * x, -spaceBetweenEnemyes_Vertical * y, 0), Quaternion.identity);
                 go_tmp.transform.parent = transform;
                 list_tmp.Add(go_tmp);
             }
             enemyList.Add(list_tmp);
         }
         enemyRef = getEnemyRef();
-        refDistance = Vector3.Distance(new Vector3(0,playerRef.transform.position.y,0) , new Vector3(0, enemyRef.transform.position.y,0));
+        refDistance = Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0));
+    }
+
+    IEnumerator newWave()
+    {
+        if (!delaySpawn)
+        {
+            delaySpawn = true;
+            yield return new WaitForSeconds(1);
+            EnemySpawn();
+            delaySpawn = false;
+        }
+
     }
 
     // Update is called once per frame
@@ -59,7 +80,14 @@ public class EnemyBlockManager : MonoBehaviour
         {
             enemySpeed = minSpeed + (maxSpeed - minSpeed) * speedCurve.Evaluate((1 - Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0)) / refDistance));
         }
-        
+        if (transform.childCount == 0)
+        {
+            StartCoroutine(newWave());
+        }
+
+        Debug.Log();
+        //RedColor - EnemyAproaching
+        EmisionMaterial.SetColor("_EmissionColor", new Vector4((maxEmisionVal - minEmisionVal) * enymyAproachingcurve.Evaluate((1 - Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0)) / refDistance)), 0, 0 , 255));
     }
 
     public IEnumerator GoToLeft()
