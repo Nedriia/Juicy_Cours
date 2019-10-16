@@ -69,7 +69,6 @@ public class playerController : MonoBehaviour
         movement.Normalize();
         //transform.Translate(movement * speed * Time.deltaTime);
         transform.position += movement * speed * Time.deltaTime;
-        Debug.Log(moveX);
         if (moveX > 0)
         {
             if (playerDirection != PlayerDirection.Right)

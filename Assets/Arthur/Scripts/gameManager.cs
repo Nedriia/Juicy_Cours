@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     public SpriteGhostTrailRenderer ghostEffect;
     public postProcessingActivation postProcess;
     public playerController player;
+    public SoundManager sound;
     
     public bool float_text;
 
@@ -102,6 +103,17 @@ public class gameManager : MonoBehaviour
         }
 
         //6- Sound
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            if (sound.SoundActive == false)
+            {
+                sound.SoundActive = true;
+            }
+            else if (sound.SoundActive == true)
+            {
+                sound.SoundActive = false;
+            }
+        }
 
         //7- Trail
         if (Input.GetKeyDown(KeyCode.Alpha7))
