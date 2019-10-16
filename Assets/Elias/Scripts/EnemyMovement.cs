@@ -20,11 +20,13 @@ public class EnemyMovement : MonoBehaviour
     public float score = 10;
     public float floatingText_MaxSize;
     public float floatingText_MediumSize;
+    private CameraShake shake;
 
     void Start()
     {
         game_ = Camera.main.GetComponent<gameManager>();
         enemyBlockManager = transform.parent.GetComponent<EnemyBlockManager>();
+        shake = Camera.main.GetComponent<CameraShake>();
     }
 
     public EnemyDirection GetEnemyDirection()
@@ -70,14 +72,24 @@ public class EnemyMovement : MonoBehaviour
         //Projectile Colliding
         if (collision.tag == "Projectile")
         {
+            if (game_.shake)
+            {
+                shake.shakeDuration = 1f;
+                shake.Shake_Death();
+            }
+
             if (floatingScore)
             {
                 ShowFloatingScore();
             }
-  
+            ObjectRefs.Instance.soundManager.PlayExplision();
+
             GameObject gameObj_tmp = Instantiate(enemyLightExplotion, transform.position, Quaternion.identity);
             gameObj_tmp.transform.position = new Vector3(gameObj_tmp.transform.position.x, gameObj_tmp.transform.position.y, -6);
-            gameObj_tmp = Instantiate(enemyLightExplotion2, transform.position, Quaternion.identity);
+
+            if(game_.particlesActivation)
+                gameObj_tmp = Instantiate(enemyLightExplotion2, transform.position, Quaternion.identity);
+
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

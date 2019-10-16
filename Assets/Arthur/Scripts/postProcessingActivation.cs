@@ -9,6 +9,8 @@ public class postProcessingActivation : MonoBehaviour
     public gameManager manager;
     public EnemyBlockManager ennemyGroup;
 
+    public float abberationMax;
+
     //public PostProcessingBehaviour postProcess;
     private ChromaticAberrationModel.Settings Profilsetting;
     private float chroma;
@@ -23,8 +25,8 @@ public class postProcessingActivation : MonoBehaviour
     void Update()
     {
         var testtest = test.profile.chromaticAberration.settings;
-        chroma = manager.multiplicator / 10;
-        chroma = Mathf.Clamp(chroma, 0, 2);
+        chroma = Mathf.Lerp(chroma, manager.multiplicator / 10, Time.deltaTime);
+        chroma = Mathf.Clamp(chroma, 0, abberationMax);
         testtest.intensity = chroma;
         test.profile.chromaticAberration.settings = testtest;
     }

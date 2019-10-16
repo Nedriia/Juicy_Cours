@@ -34,12 +34,14 @@ public class playerController : MonoBehaviour
     private bool shooted;
 
     public CameraShake shakeCamera;
-    private Animator animatorPlayer;
+    public Animator animatorPlayer;
+    private gameManager manager;
 
     private void Awake()
     {
-        animatorPlayer = GetComponent<Animator>();
+        manager = Camera.main.GetComponent<gameManager>();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -100,9 +102,14 @@ public class playerController : MonoBehaviour
 
     void Fire()
     {
-        animatorPlayer.Play("shoot");
-        shakeCamera.shakeDuration = 0.1f;
-        shakeCamera.Shake();
+        if(manager.animationEnabled)
+            animatorPlayer.Play("shoot");
+        if (manager.shake)
+        {
+            shakeCamera.shakeDuration = 0.1f;
+            shakeCamera.Shake();
+        }
+        ObjectRefs.Instance.soundManager.PlayShoot();
         shooted = true;
         var projectileFired = Instantiate(projectile,new Vector3(transform.position.x, transform.position.y + offsetStartingProjectile),Quaternion.Euler(new Vector3(0,0,90)));
     }

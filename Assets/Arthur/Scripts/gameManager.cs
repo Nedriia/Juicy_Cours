@@ -11,9 +11,15 @@ public class gameManager : MonoBehaviour
 
     public SpriteGhostTrailRenderer ghostEffect;
     public postProcessingActivation postProcess;
+    public playerController player;
+    
     public bool float_text;
 
     private float chroma;
+
+    public bool shake = true;
+    public bool animationEnabled = true;
+    public bool particlesActivation = true;
 
     private void Update()
     {
@@ -66,6 +72,60 @@ public class gameManager : MonoBehaviour
             else if(float_text == true)
             {
                 float_text = false;
+            }
+        }
+
+        //4 -Camera Shake
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (shake == false)
+            {
+                shake = true;
+            }
+            else if (shake == true)
+            {
+                shake = false;
+            }
+        }
+
+        //5 - Animation player
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if(animationEnabled == false)
+            {
+                animationEnabled = true;
+            }
+            else if(animationEnabled == true)
+            {
+                animationEnabled = false;
+            }
+        }
+
+        //6- Sound
+
+        //7- Trail
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            if (player.projectile.GetComponent<Projectiles>().GetComponent<TrailRenderer>().enabled == false)
+            {
+                player.projectile.GetComponent<Projectiles>().GetComponent<TrailRenderer>().enabled  = true;
+            }
+            else if (player.projectile.GetComponent<Projectiles>().GetComponent<TrailRenderer>().enabled == true)
+            {
+                player.projectile.GetComponent<Projectiles>().GetComponent<TrailRenderer>().enabled = false;
+            }
+        }
+
+        //8- Particules
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            if (particlesActivation == false)
+            {
+                particlesActivation = true;
+            }
+            else if (particlesActivation == true)
+            {
+                particlesActivation = false;
             }
         }
     }
