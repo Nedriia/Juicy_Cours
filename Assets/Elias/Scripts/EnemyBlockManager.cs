@@ -85,7 +85,7 @@ public class EnemyBlockManager : MonoBehaviour
             StartCoroutine(newWave());
         }
 
-        Debug.Log();
+        //Debug.Log();
         //RedColor - EnemyAproaching
         EmisionMaterial.SetColor("_EmissionColor", new Vector4((maxEmisionVal - minEmisionVal) * enymyAproachingcurve.Evaluate((1 - Vector3.Distance(new Vector3(0, playerRef.transform.position.y, 0), new Vector3(0, enemyRef.transform.position.y, 0)) / refDistance)), 0, 0 , 255));
     }
