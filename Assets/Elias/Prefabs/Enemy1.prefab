@@ -101,6 +101,8 @@ MonoBehaviour:
     type: 3}
   enemyLightExplotion: {fileID: 8576831785728832700, guid: f4d9bb771aa88534385481da50832b0c,
     type: 3}
+  enemyLightExplotion2: {fileID: 966670860533312309, guid: 7d913e8cd62006141b07874c4d419341,
+    type: 3}
   score: 10
   floatingText_MaxSize: 0.15
   floatingText_MediumSize: 0.1

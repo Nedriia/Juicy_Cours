@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
     public gameManager game_;
     public GameObject floatingScore;
     public GameObject enemyLightExplotion;
+    public GameObject enemyLightExplotion2;
     public float score = 10;
     public float floatingText_MaxSize;
     public float floatingText_MediumSize;
@@ -76,6 +77,7 @@ public class EnemyMovement : MonoBehaviour
   
             GameObject gameObj_tmp = Instantiate(enemyLightExplotion, transform.position, Quaternion.identity);
             gameObj_tmp.transform.position = new Vector3(gameObj_tmp.transform.position.x, gameObj_tmp.transform.position.y, -6);
+            gameObj_tmp = Instantiate(enemyLightExplotion2, transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
@@ -102,4 +104,8 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+
+
+
+    
 }
